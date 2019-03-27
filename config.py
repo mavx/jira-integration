@@ -4,20 +4,21 @@ import os
 CONFIG_FILE = 'config.json'
 
 
-def setup(email, token):
+def setup(email, token, server):
     config = {
         'email': email,
-        'token': token
+        'token': token,
+        'server': server
     }
     with open(CONFIG_FILE, 'w') as o:
         o.write(json.dumps(config, indent=2))
         print("Credentials saved to `{}`".format(CONFIG_FILE))
 
-    return email, token
+    return email, token, server
 
 
 def read():
-    email, token = None, None
+    email, token, server = None, None, None
     if os.path.isfile(CONFIG_FILE):
         print("Reading credentials from `{}`".format(CONFIG_FILE))
         with open(CONFIG_FILE, 'r') as f:
@@ -25,7 +26,8 @@ def read():
 
         email = config.get('email')
         token = config.get('token')
-    return email, token
+        server = config.get('server')
+    return email, token, server
 
 
 if __name__ == '__main__':
