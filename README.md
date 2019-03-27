@@ -23,4 +23,5 @@ pipenv --python3.6 install
 ## Usage
 ```
 pipenv run python main.py --year 2019 # Default value if not specified
+pipenv run python main.py --year 2019 --async # Async option ¯\_(ツ)_/¯
 ```
