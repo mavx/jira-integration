@@ -35,17 +35,17 @@ def week_ranges(year):
         yield monday, monday + timedelta(days=6)
 
 
-def completed_issues(date_start, date_end):
+def completed_issues(project, date_start, date_end):
     issues: ResultList = jira.search_issues(
-        'project=AI AND status changed to Done during ("{}", "{}")'.format(date_start, date_end),
+        'project={} AND status changed to Done during ("{}", "{}")'.format(project, date_start, date_end),
         maxResults=5, fields='summary,status,resolutiondate')
 
     return issues
 
 
-def completed_issues_json(date_start, date_end):
+def completed_issues_json(project, date_start, date_end):
     issues: ResultList = jira.search_issues(
-        'project=AI AND status changed to Done during ("{}", "{}")'.format(date_start, date_end),
+        'project={} AND status changed to Done during ("{}", "{}")'.format(project, date_start, date_end),
         maxResults=5, fields='summary,status,resolutiondate')
 
     return {
@@ -59,9 +59,9 @@ def parse_date(date_str):
     return str(parse(date_str).date()) if date_str else None
 
 
-def print_issues(year):
+def print_issues(project, year):
     for week_range in week_ranges(year):
-        issues: ResultList = completed_issues(week_range[0], week_range[1])
+        issues: ResultList = completed_issues(project, week_range[0], week_range[1])
 
         date_separator = "\n=== {} - {} ===".format(week_range[0], week_range[1])
         print(crayons.yellow(date_separator, bold=True))
@@ -73,10 +73,10 @@ def print_issues(year):
                                                                               issue.fields.status))
 
 
-async def print_issues_async(year, executor):
+async def print_issues_async(project, year, executor):
     loop = asyncio.get_event_loop()
     tasks = [
-        loop.run_in_executor(executor, completed_issues_json, week[0], week[1])
+        loop.run_in_executor(executor, completed_issues_json, project, week[0], week[1])
         for week in week_ranges(year)
     ]
     completed, pending = await asyncio.wait(tasks)
@@ -100,16 +100,17 @@ async def print_issues_async(year, executor):
 
 
 @click.command()
-@click.option('--year', default=date.today().year)
+@click.option('--project', default='AI', help='JIRA project key, e.g. AI, DE')
+@click.option('--year', default=date.today().year, help='Query issues in this year')
 @click.option('--async/--no-async', '_async', default=False)
-def main(year, _async=False):
+def main(project: str, year, _async=False):
     start = time.time()
 
     if _async:
         executor = ThreadPoolExecutor()
-        asyncio.run(print_issues_async(year, executor))
+        asyncio.run(print_issues_async(project.upper(), year, executor))
     else:
-        print_issues(year)
+        print_issues(project.upper(), year)
 
     duration = time.time() - start
     print(crayons.green("\nElapsed: {:.2f}s".format(duration), bold=True))
