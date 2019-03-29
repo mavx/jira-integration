@@ -9,6 +9,7 @@ verify_ssl = true
 click = "*"
 crayons = "*"
 python-dateutil = "*"
+jira = "*"
 
 [requires]
 python_version = "3.7"
