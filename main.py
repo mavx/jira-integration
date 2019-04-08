@@ -16,7 +16,7 @@ if not (email and token and server):
     print("JIRA credentials need to be setup locally, you will be prompted for email and API token.")
     server = input("JIRA URL (e.g. https://moneylion.atlassian.net): ")
     email = input("Email: ")
-    token = input("Token: ")
+    token = input("Token (from https://id.atlassian.com/manage/api-tokens): ")
     config.setup(email, token, server)
 options = {'server': server}
 jira = JIRA(options, basic_auth=(email, token))
