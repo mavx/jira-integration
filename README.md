@@ -16,7 +16,7 @@ Key: AI-468, Resolved: 2019-01-14, Description: Fix dockerized ai-model-txcatego
 
 ## Installation
 ```
-git clone https://stash.moneylion.com/users/mauyong/repos/jira-integration
+git clone https://github.com/mavx/jira-integration
 pipenv --python 3.7 install
 ```
 
