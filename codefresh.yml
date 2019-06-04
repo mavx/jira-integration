@@ -1,0 +1,22 @@
+version: "1"
+stages:
+  - "clone"
+  - "build"
+  - "integration"
+  - "push"
+steps:
+  main_clone:
+    type: "git-clone"
+    description: "Cloning main repository..."
+    repo: "mavx/jira-integration"
+    revision: "${{CF_BRANCH}}"
+    stage: "clone"
+  code_check:
+    stage: build
+    title: Run code checks
+    image: python:3.7-slim
+    commands:
+    - pip install mypy pytest flake8
+    - python -m pytest
+    - mypy --ignore-missing-imports .
+    - flake8 --max-line-length=88 .
