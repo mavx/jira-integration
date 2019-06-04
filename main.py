@@ -116,5 +116,8 @@ def main(project: str, year, _async=False):
     print(crayons.green("\nElapsed: {:.2f}s".format(duration), bold=True))
 
 
+def weird_func(kasdf = True):
+    print( kasdf)
+
 if __name__ == '__main__':
     main()
