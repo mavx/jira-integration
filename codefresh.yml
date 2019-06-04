@@ -21,3 +21,11 @@ steps:
     - python -m pytest
     - mypy --ignore-missing-imports .
     - flake8 --max-line-length=88 .
+  build_image:
+    stage: build
+    title: Building Docker Image
+    type: build
+    image_name: mavx/jira-integration
+    working_directory: ./
+    tag: '${{CF_SHORT_REVISION}}'
+    dockerfile: ./Dockerfile
