@@ -1,4 +1,7 @@
 ## jira-integration
+
+[![Codefresh build status]( https://g.codefresh.io/api/badges/pipeline/mavx/default%2FJIRA-integration?branch=master&key=eyJhbGciOiJIUzI1NiJ9.NWNmNjAyOTg1NTFkNjBlMTNhY2U1NTli.Oha4MNwz3JEbcUT7jgue-awqAVtpY2pcSnXsVReS0vs&type=cf-1)]( https://g.codefresh.io/pipelines/JIRA-integration/builds?repoOwner=mavx&repoName=jira-integration&serviceName=mavx%2Fjira-integration&filter=trigger:build~Build;branch:master;pipeline:5cf60308f52abbac4891a980~JIRA-integration)
+
 Does something like this:
 
 ```
