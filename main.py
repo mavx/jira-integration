@@ -14,7 +14,8 @@ import config
 email, token, server = config.read()
 if not (email and token and server):
     print(
-        "JIRA credentials need to be setup locally, you will be prompted for email and API token."
+        "JIRA credentials need to be setup locally, "
+        "you will be prompted for email and API token."
     )
     server = input("JIRA URL (e.g. https://moneylion.atlassian.net): ")
     email = input("Email: ")
@@ -135,12 +136,6 @@ def main(project: str, year, _async=False):
 
     duration = time.time() - start
     print(crayons.green("\nElapsed: {:.2f}s".format(duration), bold=True))
-    print(" SO NOT COMPLIANT" )
-    print( " Trigger another build "   )
-
-
-def weird_func(kasdf=True):
-    print(kasdf)
 
 
 if __name__ == "__main__":

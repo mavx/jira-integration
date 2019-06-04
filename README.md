@@ -26,4 +26,8 @@ pipenv run python main.py --year 2019 # Default value if not specified
 pipenv run python main.py --year 2019 --async # Async option ¯\_(ツ)_/¯
 ```
 
+## Developing
+* Get pipenv `brew install pipenv`
+* Run `build.sh` to apply code checks
+
 You will be prompted for your email, token and JIRA server details. For API token, refer to https://confluence.atlassian.com/cloud/api-tokens-938839638.html
