@@ -1,0 +1,7 @@
+scanner:
+    linter: flake8  # Alternative option - pycodestyle / flake8
+
+flake8:  # Valid if scanner.linter is flake8
+    max-line-length: 88 # 10% over the limit
+    count: False
+    show-source: True

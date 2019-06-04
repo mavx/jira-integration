@@ -1,7 +1,8 @@
 import json
 import os
+from pathlib import Path
 
-CONFIG_FILE = "config.json"
+CONFIG_FILE = str(Path.home() / ".jira-integration.json")
 
 
 def setup(email, token, server):
