@@ -131,9 +131,12 @@ def main(project: str, year, _async=False):
         asyncio.run(print_issues_async(project.upper(), year, executor))
     else:
         print_issues(project.upper(), year)
+        print("OLA!")
 
     duration = time.time() - start
     print(crayons.green("\nElapsed: {:.2f}s".format(duration), bold=True))
+    print(" SO NOT COMPLIANT" )
+    print( " Trigger another build "   )
 
 
 def weird_func(kasdf=True):
