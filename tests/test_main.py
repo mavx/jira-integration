@@ -1,4 +1,4 @@
-from main import week_ranges
+from src.util import week_ranges
 
 
 def test_week_ranges():
