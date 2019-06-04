@@ -5,3 +5,5 @@ WORKDIR $APP_HOME
 COPY . .
 RUN pip install pipenv
 RUN pipenv install --deploy --system
+
+RUN echo "Num cores: $(nproc)"
