@@ -3,6 +3,10 @@ name = "jira-integration"
 version = "0.1.6"
 description = "JIRA utility commands"
 
+packages = [
+    {include = "src"}
+]
+
 authors = [
     "mavx <user@gmail.com>"
 ]
