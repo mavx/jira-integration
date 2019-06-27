@@ -2,8 +2,7 @@ version: "1"
 stages:
   - "clone"
   - "build"
-  - "integration"
-  - "push"
+  - "publish"
 steps:
   main_clone:
     type: "git-clone"
@@ -21,11 +20,27 @@ steps:
     - python -m pytest
     - mypy --ignore-missing-imports .
     - flake8 --max-line-length=88 .
-  build_image:
-    stage: build
-    title: Building Docker Image
-    type: build
-    image_name: mavx/jira-integration
-    working_directory: ./
-    tag: '${{CF_SHORT_REVISION}}'
-    dockerfile: ./Dockerfile
+#  build_image:
+#    stage: build
+#    title: Building Docker Image
+#    type: build
+#    image_name: mavx/jira-integration
+#    working_directory: ./
+#    tag: '${{CF_SHORT_REVISION}}'
+#    dockerfile: ./Dockerfile
+  publish_package:
+    stage: publish
+    title: Publish package
+    image: python:3.7-slim
+    commands:
+      - pip install poetry
+      - export PYPI_INDEX=http://pypi.xvam.org
+      - export PYPI_REPO=moneylion
+      - export PYPI_USER=$PYPI_REPO
+      - export PYPI_PASSWORD=$PYPI_REPO
+
+      - poetry config repositories.$PYPI_REPO $PYPI_INDEX
+      - poetry config http-basic.$PYPI_REPO $PYPI_USER $PYPI_PASSWORD
+      - poetry publish -r $PYPI_REPO --build
+
+

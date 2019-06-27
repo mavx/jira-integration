@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "jira-integration"
+version = "0.1.6"
+description = "JIRA utility commands"
+
+authors = [
+    "mavx <user@gmail.com>"
+]
+
+readme = "README.md"
+repository = "https://github.com/mavx/jira-integration"
+keywords = ["jira-integration"]
+
+[tool.poetry.dependencies]
+python = "^3.7" # Compatible python versions must be declared here
+#toml = "^0.9"
+
+# Dependencies
+#requests
+
+[tool.poetry.dev-dependencies]
+pytest = "^3.0"
+pytest-cov = "^2.4"
