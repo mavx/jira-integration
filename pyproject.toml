@@ -1,6 +1,17 @@
+[build-system]
+# Minimum requirements for the build system to execute
+requires = [
+    "setuptools",
+    "wheel",
+    "click",
+    "crayons",
+    "python-dateutil",
+    "jira"
+]
+
 [tool.poetry]
 name = "jira-integration"
-version = "0.1.8"
+version = "0.1.9"
 description = "JIRA utility commands"
 
 packages = [
@@ -17,7 +28,6 @@ keywords = ["jira-integration"]
 
 [tool.poetry.dependencies]
 python = "^3.7" # Compatible python versions must be declared here
-#toml = "^0.9"
 
 # Dependencies
 #requests
