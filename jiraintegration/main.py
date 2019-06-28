@@ -6,7 +6,7 @@ from datetime import date
 import click
 import crayons
 
-from src.jira_client import JiraClient
+from jiraintegration.jira_client import JiraClient
 
 
 @click.command()

@@ -4,8 +4,8 @@ import crayons
 from jira import JIRA, Issue
 from jira.client import ResultList
 
-from src import config
-from src.util import week_ranges, parse_date
+from jiraintegration import config
+from jiraintegration.util import week_ranges, parse_date
 
 
 class JiraClient:
