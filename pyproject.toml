@@ -1,10 +1,10 @@
 [tool.poetry]
 name = "jira-integration"
-version = "0.1.6"
+version = "0.1.7"
 description = "JIRA utility commands"
 
 packages = [
-    {include = "src"}
+    {include = "jiraintegration"}
 ]
 
 authors = [

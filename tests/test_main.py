@@ -1,4 +1,4 @@
-from src.util import week_ranges
+from jiraintegration.util import week_ranges
 
 
 def test_week_ranges():
