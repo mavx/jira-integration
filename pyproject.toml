@@ -1,8 +1,8 @@
 [build-system]
 # Minimum requirements for the build system to execute
+build-backend = "poetry.masonry.api"
 requires = [
-    "setuptools",
-    "wheel",
+    "poetry",
     "click",
     "crayons",
     "python-dateutil",
@@ -11,7 +11,7 @@ requires = [
 
 [tool.poetry]
 name = "jira-integration"
-version = "0.1.9"
+version = "0.1.11"
 description = "JIRA utility commands"
 
 packages = [
@@ -26,12 +26,6 @@ readme = "README.md"
 repository = "https://github.com/mavx/jira-integration"
 keywords = ["jira-integration"]
 
-[tool.poetry.dependencies]
-python = "^3.7" # Compatible python versions must be declared here
-
-# Dependencies
-#requests
-
-[tool.poetry.dev-dependencies]
-pytest = "^3.0"
-pytest-cov = "^2.4"
+[[tool.poetry.source]]
+name = "mavx"
+url = "http://pypi.xvam.org"
