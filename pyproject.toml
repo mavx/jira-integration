@@ -1,19 +1,20 @@
 [build-system]
 # Minimum requirements for the build system to execute
+# Here, we use poetry as the default package builder,
+# other options include setuptools, flit, etc
 build-backend = "poetry.masonry.api"
 requires = [
-    "poetry",
-    "click",
-    "crayons",
-    "python-dateutil",
-    "jira"
+    "poetry"
 ]
 
 [tool.poetry]
+# Distribution name of this package, can be different from actual package name
 name = "jira-integration"
-version = "0.1.11"
+version = "0.1.15"
 description = "JIRA utility commands"
 
+# Using this disables the package auto-detection feature, meaning you have
+# to explicitly specify the "default" package
 packages = [
     {include = "jiraintegration"}
 ]
@@ -25,6 +26,13 @@ authors = [
 readme = "README.md"
 repository = "https://github.com/mavx/jira-integration"
 keywords = ["jira-integration"]
+
+[tool.poetry.dependencies]
+python = "^3.7"
+jira = "^2.0.0"
+Click = "^7.0.0"
+crayons = "^0.2.0"
+python-dateutil = "^2.8.0"
 
 [[tool.poetry.source]]
 name = "mavx"
