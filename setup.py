@@ -5,7 +5,7 @@ with open("README.md", "r") as f:
 
 setuptools.setup(
     name="jira_integration",
-    version="0.1.17",
+    version="0.1.19",
     author="mauyong",
     author_email="author@example.com",
     description="JIRA utility commands",
