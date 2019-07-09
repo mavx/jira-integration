@@ -4,8 +4,8 @@ with open("README.md", "r") as f:
     long_description = f.read()
 
 setuptools.setup(
-    name="jira-integration",
-    version="0.1.16",
+    name="jira_integration",
+    version="0.1.17",
     author="mauyong",
     author_email="author@example.com",
     description="JIRA utility commands",
