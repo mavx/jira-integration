@@ -25,7 +25,6 @@ steps:
     title: Publish package
     image: python:3.7-slim
     commands:
-      - pip install "setuptools<=38.5.2" # IMPORTANT: This PyPI host requires Metadata-Version <= 1.2
       - echo "[distutils]" >> ~/.pypirc
       - echo "index-servers = moneylion" >> ~/.pypirc
       - echo "[moneylion]" >> ~/.pypirc
