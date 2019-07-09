@@ -1,0 +1,36 @@
+version: "1"
+stages:
+  - "clone"
+  - "build"
+  - "publish"
+steps:
+  main_clone:
+    type: "git-clone"
+    description: "Cloning main repository..."
+    repo: "mavx/jira-integration"
+    revision: "${{CF_BRANCH}}"
+    stage: "clone"
+  code_check:
+    stage: build
+    title: Run code checks
+    image: python:3.7-slim
+    commands:
+    - pip install pipenv
+    - pipenv install --dev --system
+    - python -m pytest
+    - mypy --ignore-missing-imports .
+    - flake8 --max-line-length=88 .
+  publish_package:
+    stage: publish
+    title: Publish package
+    image: python:3.7-slim
+    commands:
+      - echo "[distutils]" >> ~/.pypirc
+      - echo "index-servers = moneylion" >> ~/.pypirc
+      - echo "[moneylion]" >> ~/.pypirc
+      - echo "repository = http://pypi.xvam.org" >> ~/.pypirc
+      - echo "username = $PYPI_USER" >> ~/.pypirc
+      - echo "password = $PYPI_PASSWORD" >> ~/.pypirc
+      - python setup.py bdist_wheel upload -r moneylion
+
+
